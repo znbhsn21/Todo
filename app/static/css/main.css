@@ -1,0 +1,329 @@
+/* ======================================
+   Base Styles
+====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffe4ec, #ffd6f0, #fff0f7);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* ======================================
+   Animations
+====================================== */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================
+   Cards & Containers
+====================================== */
+.container, .card, .auth-container, .profile-container, .password-container, .password-success, .welcome-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    box-shadow: 0 6px 25px rgba(214, 51, 132, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.container:hover, .card:hover, .auth-container:hover, .profile-container:hover, .password-container:hover, .welcome-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(214, 51, 132, 0.25);
+}
+
+/* ======================================
+   Header
+====================================== */
+.header {
+    background: #ffccdf;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.2);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: #a61e63;
+}
+
+/* Dropdown Menu */
+.account-menu {
+    position: relative;
+}
+.dropdown-btn {
+    background: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #a61e63;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(214, 51, 132, 0.2);
+    transition: all 0.3s ease;
+}
+.dropdown-btn:hover { background: #ffe4ec; }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.2);
+    margin-top: 0.5rem;
+    min-width: 120px;
+    z-index: 100;
+}
+.dropdown-content a {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: #d63384;
+    transition: background 0.3s ease;
+}
+.dropdown-content a:hover { background: #ffe4ec; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* ======================================
+   Buttons
+====================================== */
+a.btn, .btn, .btn-primary, .btn-danger, .btn-signup, .btn-login, .btn-logout {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+}
+
+/* Primary Button */
+.btn-primary, .btn-signup {
+    background: #d63384;
+    color: #fff;
+}
+.btn-primary:hover, .btn-signup:hover {
+    background: #a61e63;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+}
+
+/* Danger Button */
+.btn-danger {
+    background: #ff6b81;
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #e63950;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 57, 80, 0.3);
+}
+
+/* Logout Button */
+.btn-logout {
+    background: #ffe0ec;
+    color: #d63384;
+}
+.btn-logout:hover {
+    background: #ffb6d1;
+}
+
+/* Login / Sign Up Buttons */
+.btn-login {
+    background: #ffe4ec;
+    color: #a61e63;
+}
+.btn-login:hover {
+    background: #ffb6d1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+}
+
+/* ======================================
+   Forms
+====================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #ffe4ec;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+    border-color: #d63384;
+    outline: none;
+    box-shadow: 0 0 10px rgba(214, 51, 132, 0.2);
+}
+
+/* ======================================
+   Tables (Task Manager)
+====================================== */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+.task-table th, .task-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f7c6d8;
+}
+.task-table th {
+    background: #ffe4ec;
+    color: #a61e63;
+    font-weight: 600;
+}
+.task-table tr:hover {
+    background: #fff0f7;
+    transition: background 0.3s ease;
+}
+
+/* Status Labels */
+.status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.status-pending {
+    background: #ffe4ec;
+    color: #a61e63;
+}
+.status-inprogress {
+    background: #fff3cd;
+    color: #856404;
+}
+.status-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Empty Table */
+.empty {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: #777;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+/* ======================================
+   Profile / Account
+====================================== */
+.profile-container h2, .profile-container h3 {
+    color: #a61e63;
+    margin-bottom: 0.8rem;
+}
+.profile-container p {
+    margin: 0.5rem 0;
+}
+
+/* ======================================
+   Welcome Page
+====================================== */
+.welcome-container .title {
+    font-size: 2.2rem;
+    color: #a61e63;
+    margin-bottom: 1rem;
+}
+.welcome-container .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+.welcome-container .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ======================================
+   Alternative Links
+====================================== */
+.alt-link {
+    display: block;
+    margin-top: 1rem;
+    color: #d63384;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.alt-link:hover {
+    color: #a61e63;
+    text-decoration: underline;
+}
+
+/* ======================================
+   Responsive Design
+====================================== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .container, .card, .auth-container, .profile-container, .password-container, .password-success, .welcome-container {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+    }
+
+    /* Task table mobile card view */
+    .task-table, .task-table thead, .task-table tbody, .task-table th, .task-table td, .task-table tr {
+        display: block;
+        width: 100%;
+    }
+    .task-table thead tr { display: none; }
+    .task-table tr {
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(214, 51, 132, 0.1);
+    }
+    .task-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .task-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: 45%;
+        text-align: left;
+        font-weight: bold;
+        color: #a61e63;
+    }
+
+    .btn, .btn-primary, .btn-danger, .btn-signup, .btn-login {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .welcome-container .title { font-size: 1.8rem; }
+    .welcome-container .subtitle { font-size: 1rem; }
+}

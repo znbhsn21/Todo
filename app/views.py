@@ -9,47 +9,44 @@ from django.contrib.auth.decorators import login_required
 def profile(request):
     return render(request, "profile.html", {"user": request.user})
 
-@login_required
-def home(request, task_id=None, action=None):
-    # Handle Add / Update
-    if request.method == "POST":
-        if task_id:  # updating a task
-            task = get_object_or_404(Task, id=task_id, user=request.user)  # 👈 only their own
-            form = TaskForm(request.POST, instance=task)
-        else:  # adding a new task
-            form = TaskForm(request.POST)
-            if form.is_valid():
-                task = form.save(commit=False)
-                task.user = request.user  # 👈 assign owner
-                task.save()
-                return redirect("home")
 
+@login_required
+def home(request):
+    tasks = Task.objects.filter(user=request.user).order_by("-created_at")
+    return render(request, "home.html", {"tasks": tasks})
+
+@login_required
+def task_add(request):
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            return redirect("home")
+    else:
+        form = TaskForm()
+    return render(request, "task_add.html", {"form": form})
+
+@login_required
+def task_edit(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
             return redirect("home")
     else:
-        form = TaskForm()
+        form = TaskForm(instance=task)
+    return render(request, "task_edit.html", {"form": form, "task": task})
 
-    # If editing
-    edit_task = None
-    if action == "edit" and task_id:
-        edit_task = get_object_or_404(Task, id=task_id, user=request.user)
-        form = TaskForm(instance=edit_task)
-
-    # If deleting
-    if action == "delete" and task_id:
-        task = get_object_or_404(Task, id=task_id, user=request.user)
+@login_required
+def task_delete(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == "POST":
         task.delete()
         return redirect("home")
-
-    # 👇 only this user's tasks
-    tasks = Task.objects.filter(user=request.user).order_by("-created_at")
-
-    return render(request, "home.html", {
-        "tasks": tasks,
-        "form": form,
-        "edit_task": edit_task
-    })
+    return render(request, "task_delete.html", {"task": task})
 
 
 def welcome(request):
@@ -77,6 +74,6 @@ def login_view(request):
         form = CustomLoginForm()
     return render(request, "login.html", {"form": form})
 
-def logout(request):
+def logout_view(request):
     logout(request)
     return redirect("welcome")

@@ -4,76 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <!-- Header with account info -->
+    <!-- Header -->
     <header class="header">
-    <h1>Task Manager</h1>
-    <div class="account-menu">
-        <span class="welcome-msg">Hello, {{ request.user.username }} 👋</span>
-        <a href="{% url 'profile' %}" class="btn">Profile</a>
-        <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
-    </div>
+        <h1>Task Manager</h1>
+        <div class="account-menu">
+            <div class="dropdown">
+                <button class="dropdown-btn">Hello, {{ request.user.username }} ⬇</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
     </header>
 
+    <main class="container">
+        <section class="card">
+            <h2>Your Tasks</h2>
+            <a href="{% url 'task_add' %}" class="btn-primary">+ Add Task</a>
 
-    <!-- Add / Edit Task Form -->
-    <div class="form-container">
-        {% if edit_task %}
-            <h2>Edit Task: {{ edit_task.name }}</h2>
-            <form method="post" action="{% url 'task_action' edit_task.id 'edit' %}">
-        {% else %}
-            <h2>Add Task</h2>
-            <form method="post" action="{% url 'home' %}">
-        {% endif %}
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">
-                {% if edit_task %} Update {% else %} Add {% endif %} Task
-            </button>
-        </form>
-    </div>
-
-    <!-- Task List -->
-    {% if tasks %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Created</th>
-                    <th>Due</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.name }}</td>
-                        <td>
-                            {% if task.status == "pending" %}
-                                <span class="status-badge status-pending">Pending</span>
-                            {% elif task.status == "in-progress" %}
-                                <span class="status-badge status-in-progress">In-Progress</span>
-                            {% elif task.status == "completed" %}
-                                <span class="status-badge status-completed">Completed</span>
-                            {% endif %}
-                        </td>
-                        <td>{{ task.created_at }}</td>
-                        <td>{{ task.due_date|default:"-" }}</td>
-                        <td>
-                            <a href="{% url 'task_action' task.id 'edit' %}" class="btn">Edit</a>
-                            <a href="{% url 'task_action' task.id 'delete' %}" class="btn"
-                               onclick="return confirm('Delete task: {{ task.name }}?')">Delete</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No tasks yet.</p>
-    {% endif %}
+            {% if tasks %}
+                <table class="task-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Due</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr>
+                                <td>{{ task.name }}</td>
+                                <td>
+                                    {% if task.status == "pending" %}
+                                        <span class="status status-pending">Pending</span>
+                                    {% elif task.status == "in-progress" %}
+                                        <span class="status status-inprogress">In Progress</span>
+                                    {% elif task.status == "completed" %}
+                                        <span class="status status-completed">Completed</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ task.due_date|default:"-" }}</td>
+                                <td>
+                                    <a href="{% url 'task_edit' task.id %}" class="btn">Edit</a>
+                                    <a href="{% url 'task_delete' task.id %}" class="btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">No tasks yet. 🎉</p>
+            {% endif %}
+        </section>
+    </main>
 </body>
 </html>
