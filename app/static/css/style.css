@@ -1,0 +1,98 @@
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background-color: #F4F6F9;
+    color: #1F1F1F;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4A3AFF;
+}
+
+/* Task Form */
+.form-container {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.form-container h2 {
+    margin-bottom: 1rem;
+    color: #4A3AFF;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.4rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+button {
+    background-color: #4A3AFF;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.6rem;
+    transition: background 0.3s;
+}
+button:hover {
+    background-color: #6C63FF;
+}
+
+/* Task Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+th {
+    background-color: #4A3AFF;
+    color: white;
+    padding: 0.8rem;
+}
+td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+tr:nth-child(even) td {
+    background-color: #FAFAFA;
+}
+
+/* Action Buttons */
+.btn {
+    background-color: #6C63FF;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    margin: 0.2rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background-color: #4A3AFF;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+.status-pending { background-color: #FFB74D; }
+.status-in-progress { background-color: #4FC3F7; }
+.status-completed { background-color: #66BB6A; }

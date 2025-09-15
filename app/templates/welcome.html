@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1 class="title">Welcome to Your Task Manager</h1>
+        <p class="subtitle">Stay productive. Stay organized.</p>
+
+        <div class="buttons">
+            <a href="{% url 'signup' %}" class="btn btn-signup">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+        </div>
+    </div>
+</body>
+</html>
