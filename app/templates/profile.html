@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>My Account</h1>
+        <div class="account-menu">
+            <a href="{% url 'home' %}" class="btn">Back to Tasks</a>
+            <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <h2>Account Details</h2>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+
+        <hr>
+        <h3>Security</h3>
+        <a href="{% url 'password_change' %}" class="btn">Change Password</a>
+    </div>
+</body>
+</html>

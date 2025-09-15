@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <!-- Header with account info -->
+    <header class="header">
     <h1>Task Manager</h1>
+    <div class="account-menu">
+        <span class="welcome-msg">Hello, {{ request.user.username }} 👋</span>
+        <a href="{% url 'profile' %}" class="btn">Profile</a>
+        <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+    </div>
+    </header>
+
 
     <!-- Add / Edit Task Form -->
     <div class="form-container">
@@ -68,5 +77,3 @@
     {% endif %}
 </body>
 </html>
-
-
