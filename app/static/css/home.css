@@ -1,0 +1,249 @@
+/* Reset some defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff0f6;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #ff69b4, #ff85a2);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.account-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background: #ffadd6;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+}
+
+.dropdown-btn:hover {
+    background: #ff92c2;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    right: 0;
+    top: 40px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #ffe0ec;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Card Section */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    color: #ff4d94;
+}
+
+/* Buttons */
+.btn-primary,
+.btn,
+.btn-danger {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 5px 5px 5px 0;
+    transition: background 0.3s ease;
+}
+
+.btn-primary {
+    background: #ff85b3;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #ff4d94;
+}
+
+.btn {
+    background-color: #ffe0ec;
+    color: #ff4d94;
+}
+
+.btn:hover {
+    background-color: #ffccde;
+}
+
+.btn-danger {
+    background-color: #ffb3c6;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #ff4d6d;
+}
+
+/* Table Styles */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.task-table th,
+.task-table td {
+    text-align: left;
+    padding: 12px 15px;
+}
+
+.task-table th {
+    background-color: #ffe0ec;
+    color: #ff4d94;
+}
+
+.task-table tbody tr {
+    border-bottom: 1px solid #f3c1d8;
+}
+
+.task-table tbody tr:nth-child(even) {
+    background-color: #fff7fa;
+}
+
+/* Status Badges */
+.status {
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+
+.status-pending {
+    background-color: #ffe3e3;
+    color: #ff4d4f;
+}
+
+.status-inprogress {
+    background-color: #fff0b3;
+    color: #fa8c16;
+}
+
+.status-completed {
+    background-color: #d9f7be;
+    color: #52c41a;
+}
+
+/* Empty State */
+.empty {
+    color: #999;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .dropdown-btn {
+        padding: 8px 12px;
+    }
+
+    .task-table thead {
+        display: none;
+    }
+
+    .task-table, 
+    .task-table tbody, 
+    .task-table tr, 
+    .task-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .task-table tr {
+        margin-bottom: 20px;
+        background: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .task-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .task-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        color: #ff4d94;
+        text-align: left;
+    }
+}

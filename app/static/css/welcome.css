@@ -1,0 +1,98 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #fff0f6, #ffe0ec);
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container */
+.welcome-container {
+    text-align: center;
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Title & Subtitle */
+.title {
+    font-size: 2rem;
+    color: #ff4d94;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    width: 100%;
+}
+
+.btn-signup {
+    background-color: #ff85b3;
+    color: white;
+}
+
+.btn-signup:hover {
+    background-color: #ff4d94;
+}
+
+.btn-login {
+    background-color: #ffe0ec;
+    color: #ff4d94;
+    border: 2px solid #ff4d94;
+}
+
+.btn-login:hover {
+    background-color: #ffedf4;
+}
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+    .welcome-container {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}

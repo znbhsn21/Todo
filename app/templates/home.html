@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
     <!-- Header -->
@@ -39,8 +39,8 @@
                     <tbody>
                         {% for task in tasks %}
                             <tr>
-                                <td>{{ task.name }}</td>
-                                <td>
+                                <td data-label="Name">{{ task.name }}</td>
+                                <td data-label="Status">
                                     {% if task.status == "pending" %}
                                         <span class="status status-pending">Pending</span>
                                     {% elif task.status == "in-progress" %}
@@ -49,8 +49,8 @@
                                         <span class="status status-completed">Completed</span>
                                     {% endif %}
                                 </td>
-                                <td>{{ task.due_date|default:"-" }}</td>
-                                <td>
+                                <td data-label="Due">{{ task.due_date|default:"-" }}</td>
+                                <td data-label="Actions">
                                     <a href="{% url 'task_edit' task.id %}" class="btn">Edit</a>
                                     <a href="{% url 'task_delete' task.id %}" class="btn-danger">Delete</a>
                                 </td>

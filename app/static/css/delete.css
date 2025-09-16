@@ -1,0 +1,111 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(to right, #fff0f6, #ffe0ec);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card Container */
+.container {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.1);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    color: #ff4d94;
+    margin-bottom: 20px;
+}
+
+/* Confirmation Text */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+strong {
+    color: #ff4d94;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn-danger,
+.btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    border: none;
+    min-width: 120px;
+}
+
+/* Delete Button */
+.btn-danger {
+    background-color: #ff4d94;
+    color: white;
+    border: 2px solid #ff4d94;
+}
+
+.btn-danger:hover {
+    background-color: #ff3377;
+    border-color: #ff3377;
+}
+
+/* Cancel Button */
+.btn {
+    background-color: #ffe0ec;
+    color: #ff4d94;
+    border: 2px solid #ff4d94;
+    line-height: 1.2;
+}
+
+.btn:hover {
+    background-color: #ffedf4;
+}
+
+/* Responsive */
+@media screen and (max-width: 400px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-danger,
+    .btn {
+        width: 100%;
+        min-width: unset;
+        font-size: 1rem;
+        padding: 14px 0;
+    }
+}
